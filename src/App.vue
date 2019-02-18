@@ -4,9 +4,15 @@
       fixed
       v-model="drawer"
       app
+      temporary
     >
       <v-list dense>
-        <v-list-tile v-for="item in navigation" :key="item.title">
+        <v-list-tile 
+          v-for="item in 
+          navigation" 
+          :key="item.title"
+          router
+          :to='item.link'>
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
@@ -18,7 +24,11 @@
     </v-navigation-drawer>
     <v-toolbar color='primary' fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>G102 Meetups</v-toolbar-title>
+        <v-toolbar-title>
+          <router-link to='/' tag='span' style='cursor: pointer'>
+            G102 Meetups
+          </router-link>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn v-for="item in navigation" :key="item.title">
         <v-icon left dark>{{item.icon}}</v-icon>
@@ -39,11 +49,11 @@ export default {
     return {
       drawer: null,
       navigation: [
-        {icon: 'supervisor_account', title: 'G102 Meetups'},
-        {icon: 'room', title: 'Organize Meetup'},
-        {icon: 'person', title: 'Profile'},
-        {icon: 'face', title: 'Sign up'},
-        {icon: 'lock_open', title: 'Sign in'}
+        {icon: 'supervisor_account', title: 'G102 Meetups', link: '/meetups'},
+        {icon: 'room', title: 'Organize Meetup', link: '/meetups/new'},
+        {icon: 'person', title: 'Profile', link: '/profile'},
+        {icon: 'face', title: 'Sign up', link: '/signup'},
+        {icon: 'lock_open', title: 'Sign in', link: '/signin'}
 
       ]
     }
