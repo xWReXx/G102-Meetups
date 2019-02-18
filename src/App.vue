@@ -11,7 +11,6 @@
           v-for="item in 
           navigation" 
           :key="item.title"
-          router
           :to='item.link'>
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
@@ -23,14 +22,21 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color='primary' fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon 
+        @click.stop="drawer = !drawer"
+        class='hidden-sm-and-up'
+      ></v-toolbar-side-icon>
         <v-toolbar-title>
           <router-link to='/' tag='span' style='cursor: pointer'>
             G102 Meetups
           </router-link>
         </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn v-for="item in navigation" :key="item.title">
+      <v-btn
+        class='hidden-xs-only'
+        v-for="item in navigation" 
+        :key="item.title"
+        :to='item.link'>
         <v-icon left dark>{{item.icon}}</v-icon>
         {{item.title}}
       </v-btn>
