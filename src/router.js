@@ -6,7 +6,6 @@ import Meetups from './components/Meetup/Meetups'
 import CreateMeetup from './components/Meetup/CreateMeetup'
 import Profile from './components/User/Profile'
 import Signin from './components/User/Signin.vue'
-import HelloWorld from './components/HelloWorld'
 import Signup from './components/User/Signup'
 import Meetup from './components/Meetup/Meetup'
 
@@ -49,11 +48,6 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup
-    },
-    {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld
     }
   ],
   mode: 'history'

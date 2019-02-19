@@ -9,7 +9,7 @@
                         height="400px"
                     ></v-img>
                     <v-card-text>
-                        <div class='primary--text'>{{meetup.date}} in {{meetup.location}}</div>
+                        <div class='primary--text'>{{meetup.date| date}} in {{meetup.location}}</div>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos voluptatibus quas reprehenderit 
                             delectus iste saepe velit expedita dolore accusamus repudiandae, hic earum adipisci cum debitis nulla libero 

@@ -2,10 +2,10 @@
     <v-container>
         <v-layout row wrap class='mb-2'>
             <v-flex xs12 sm6 class='text-xs-center text-sm-right'>
-                <v-btn class='primary' large to='/meetups'>Explore Meetups</v-btn>
+                <v-btn class='primary test' large to='/meetups'>Explore Meetups</v-btn>
             </v-flex>
             <v-flex xs12 sm6 class='text-xs-center text-sm-left'>
-                <v-btn class='primary' large to='/meetups/new'>Organize Meetups</v-btn>
+                <v-btn class='primary test' large to='/meetups/new'>Organize Meetups</v-btn>
             </v-flex>
         </v-layout>
         <v-layout>
@@ -59,4 +59,12 @@ export default {
         padding: 20px;
     }
     
+</style>
+
+<style>
+    .test {
+        font-weight: bold;
+        font-size: 1em;
+        text-shadow: 2px 2px black;
+    }
 </style>

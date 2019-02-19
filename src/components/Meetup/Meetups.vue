@@ -19,7 +19,7 @@
                                             <div>
                                             <div class="headline">{{meetup.title}}</div>
                                             <div>{{meetup.location}}</div>
-                                            <div>{{meetup.date}}</div>
+                                            <div>{{meetup.date | date}}</div>
                                             </div>
                                         </v-card-title>
                                         </v-flex>
