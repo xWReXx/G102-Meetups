@@ -35,19 +35,14 @@
 <script>
 export default {
     name: 'Home',
-    data () {
-        return {
-            meetups: [
-                {id: '1', src: 'https://static1.squarespace.com/static/5009bba4e4b016a023bf6030/t/5581ec20e4b0a5db48a55f56/1434577956896/Snowboarding-Wallpaper.jpg?format=1500w', title: 'Snowboarding'},
-                {id: '2', src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg', title: 'Fishing'},
-                {id: '3', src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg', title: 'Coding'},
-                {id: '4', src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg', title: 'Kombucha'}
-            ]
+    computed: {
+        meetups () {
+            return this.$store.getters.featuredMeetups
         }
     },
     methods: {
-        onLoadMeetup(){
-            this.$router.push('/meetups/' +  id)
+        onLoadMeetup(id) {
+            this.$router.push('/meetups/' + id)
         }
     }
 }

@@ -3,13 +3,13 @@
         <v-layout row wrap>
             <v-flex xs12>
                 <v-card>
-                    <v-card-title>Snowboarding</v-card-title>
-                    <v-card-media
-                        src="https://static1.squarespace.com/static/5009bba4e4b016a023bf6030/t/5581ec20e4b0a5db48a55f56/1434577956896/Snowboarding-Wallpaper.jpg?format=1500w"
+                    <v-card-title>{{meetup.title}}</v-card-title>
+                    <v-img
+                        :src="meetup.src"
                         height="400px"
-                    ></v-card-media>
+                    ></v-img>
                     <v-card-text>
-                        <div class='primary--text'>February 21st, 2019</div>
+                        <div class='primary--text'>{{meetup.date}} in {{meetup.location}}</div>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos voluptatibus quas reprehenderit 
                             delectus iste saepe velit expedita dolore accusamus repudiandae, hic earum adipisci cum debitis nulla libero 
@@ -25,3 +25,14 @@
         </v-layout>
     </v-container>
 </template>
+
+<script>
+export default {
+    props: ['id'],
+    computed: {
+        meetup() {
+            return this.$store.getters.loadedMeetup(this.id)
+        }
+    }
+}
+</script>
