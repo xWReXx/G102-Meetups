@@ -41,7 +41,7 @@
               </v-text-field>
             </v-flex>
           </v-layout>
-          <!-- <v-layout row>
+          <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
               <input
@@ -52,7 +52,7 @@
                 @change="onFilePicked"
               >
             </v-flex>
-          </v-layout> -->
+          </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <img :src="imageUrl" height="150">
@@ -105,6 +105,7 @@ export default {
       description: "",
       date: new Date().toISOString().substr(0, 10),
       time: new Date,
+      image: null
     }
   },
   computed: {
@@ -146,23 +147,23 @@ export default {
       console.log(meetupData)
       this.$store.dispatch("createMeetup", meetupData)
       this.$router.push("/meetups")
+    },
+    onPickFile() {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked(event) {
+      const files = event.target.files
+      let filename = files[0].name
+      if (filename.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!")
+      }
+      const fileReader = new FileReader()
+      fileReader.addEventListener("load", () => {
+        this.imageUrl = fileReader.result
+      })
+      fileReader.readAsDataURL(files[0])
+      this.image = files[0]
     }
-    // onPickFile() {
-    //   this.$refs.fileInput.click()
-    // },
-    // onFilePicked(event) {
-    //   const files = event.target.files
-    //   let filename = files[0].name
-    //   if (filename.lastIndexOf(".") <= 0) {
-    //     return alert("Please add a valid file!")
-    //   }
-    //   const fileReader = new FileReader()
-    //   fileReader.addEventListener("load", () => {
-    //     this.imageUrl = fileReader.result
-    //   })
-    //   fileReader.readAsDataURL(files[0])
-    //   this.image = files[0]
-    // }
   }
 }
 </script>

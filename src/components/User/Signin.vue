@@ -87,9 +87,6 @@ export default {
     methods: {
         onSignIn () {
             this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
-                .then(user => {
-                    this.signedIn = true
-                })
         },
         onDismissed() {
             this.$store.dispatch("clearError");
