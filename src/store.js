@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import firebase from 'firebase'
+import * as firebase from 'firebase'
 
 Vue.use(Vuex)
 
@@ -9,7 +9,7 @@ export default new Vuex.Store({
     loadedMeetups: [
       {
         id: 'snow', 
-        src: 'https://static1.squarespace.com/static/5009bba4e4b016a023bf6030/t/5581ec20e4b0a5db48a55f56/1434577956896/Snowboarding-Wallpaper.jpg?format=1500w',
+        imageUrl: 'https://static1.squarespace.com/static/5009bba4e4b016a023bf6030/t/5581ec20e4b0a5db48a55f56/1434577956896/Snowboarding-Wallpaper.jpg?format=1500w',
         title: 'Snowboarding',
         date: new Date(),
         location: 'Winterpark',
@@ -17,7 +17,7 @@ export default new Vuex.Store({
       },
       {
         id: 'fish',
-        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+        imageUrl: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
         title: 'Fishing',
         date: new Date(),
         location: 'Evergreen',
@@ -25,7 +25,7 @@ export default new Vuex.Store({
       },
       {
         id: 'code',
-        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+        imageUrl: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
         title: 'Coding',
         date: new Date(),
         location: 'Galvanize',
@@ -33,7 +33,7 @@ export default new Vuex.Store({
       },
       {
         id: 'kombucha',
-        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+        imageUrl: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
         title: 'Kombucha',
         date: new Date(),
         location: 'Galvanize',
@@ -68,11 +68,16 @@ export default new Vuex.Store({
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
-        date: payload.date,
-        id: 'kfdlsfjslakl12'
+        date: payload.date.toISOString()
       }
-      // Reach out to firebase and store it
-      commit('createMeetup', meetup)
+      firebase.database().ref('meetups').push(meetup)
+        .then((data) => {
+          const key = data.key
+          commit('createMeetup', {...meetup, id: key})
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)

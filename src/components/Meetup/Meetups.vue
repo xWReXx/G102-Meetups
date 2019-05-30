@@ -10,7 +10,7 @@
                                     <v-layout>
                                         <v-flex xs5>
                                         <v-img class='ml-2'
-                                            :src="meetup.src"
+                                            :src="meetup.imageUrl"
                                             height="125px"
                                         ></v-img>
                                         </v-flex>
