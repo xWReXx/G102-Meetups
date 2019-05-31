@@ -29,7 +29,8 @@
                                         <v-spacer></v-spacer>
                                         <v-btn flat :to="'/meetups/' + meetup.id">
                                             <v-icon left>arrow_forward</v-icon>
-                                            View Meetup</v-btn>
+                                            View Meetup
+                                        </v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-flex>
