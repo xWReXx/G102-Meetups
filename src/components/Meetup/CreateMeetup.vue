@@ -128,7 +128,6 @@ export default {
         date.setHours(this.time.getHours())
         date.setMinutes(this.time.getMinutes())
       }
-      console.log(date)
       return date
     }
   },
@@ -137,14 +136,16 @@ export default {
       if (!this.formIsValid) {
         return
       }
+      if (!this.image) {
+        return
+      }
       const meetupData = {
         title: this.title,
         location: this.location,
-        imageUrl: this.imageUrl,
+        image: this.image,
         description: this.description,
         date: this.submittableDateTime
       }
-      console.log(meetupData)
       this.$store.dispatch("createMeetup", meetupData)
       this.$router.push("/meetups")
     },
