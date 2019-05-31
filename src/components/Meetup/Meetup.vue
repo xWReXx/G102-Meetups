@@ -1,8 +1,18 @@
 <template>
     <v-container>
-        <v-layout row wrap>
+        <v-layout v-if="loading">
+            <v-flex xs12 class="text-xs-center">
+                <v-progress-circular
+                    indeterminate
+                    :width="7"
+                    :size="70"
+                    color="primary"
+                ></v-progress-circular>
+            </v-flex>
+        </v-layout>
+        <v-layout row wrap v-else>
             <v-flex xs12>
-                <v-card v-if="meetup">
+                <v-card>
                     <v-card-title>{{meetup.title}}
                         <template v-if="userIsCreator">
                             <v-spacer></v-spacer>
@@ -15,6 +25,10 @@
                     ></v-img>
                     <v-card-text>
                         <div class='primary--text'>{{meetup.date| date}} in {{meetup.location}}</div>
+                        <div>
+                            <app-edit-meetup-date :meetup='meetup' v-if="userIsCreator"></app-edit-meetup-date>
+                            <app-edit-meetup-time :meetup='meetup' v-if="userIsCreator"></app-edit-meetup-time>
+                        </div>
                         <div>
                             {{meetup.description}}
                         </div>
@@ -44,6 +58,9 @@ export default {
                 return false
             }
             return this.$store.getters.user.id == this.meetup.creatorID
+        },
+        loading () {
+            return this.$store.getters.loading
         }
     }
 }

@@ -7,13 +7,16 @@ import DateFilter from './filters/date'
 import firebase from 'firebase'
 import Alert from './components/Shared/Alert.vue'
 import editMeetupModal from './components/Meetup/editMeetupModal.vue'
-
+import editMeetupDate from './components/Meetup/editMeetupDate.vue'
+import editMeetupTime from './components/Meetup/editMeetupTime.vue'
 
 
 Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', Alert)
 Vue.component('app-edit-meetup-details', editMeetupModal)
+Vue.component('app-edit-meetup-date', editMeetupDate)
+Vue.component('app-edit-meetup-time', editMeetupTime)
 
 new Vue({
   router,
