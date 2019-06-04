@@ -9,6 +9,7 @@ import Alert from './components/Shared/Alert.vue'
 import editMeetupModal from './components/Meetup/editMeetupModal.vue'
 import editMeetupDate from './components/Meetup/editMeetupDate.vue'
 import editMeetupTime from './components/Meetup/editMeetupTime.vue'
+import registerModal from './components/Meetup/registrationModal.vue'
 
 
 Vue.config.productionTip = false
@@ -17,6 +18,7 @@ Vue.component('app-alert', Alert)
 Vue.component('app-edit-meetup-details', editMeetupModal)
 Vue.component('app-edit-meetup-date', editMeetupDate)
 Vue.component('app-edit-meetup-time', editMeetupTime)
+Vue.component('app-edit-registration', registerModal)
 
 new Vue({
   router,

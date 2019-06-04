@@ -18,7 +18,7 @@
                 <v-layout row wrap>
                     <v-flex xs12>
                         <v-time-picker color="primary" style="width: 100%" v-model="editedTime" actions format="24hr">
-                            <template slot-scope="{save, cancel}">
+                            <template slot-scope="{Save, Cancel}">
                                 <v-btn @click.native='editDialog = false'>Cancel</v-btn>
                                 <v-btn @click.native='onSaveCahnges'>Save</v-btn>  
                             </template>

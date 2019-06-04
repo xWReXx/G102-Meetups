@@ -18,7 +18,7 @@
                 <v-layout row wrap>
                     <v-flex xs12>
                         <v-date-picker color="primary" style="width: 100%" v-model="editedDate" actions>
-                            <template slot-scope="{save, cancel}">
+                            <template slot-scope="{Save, Cancel}">
                                 <v-btn @click.native='editDialog = false'>Cancel</v-btn>
                                 <v-btn @click.native='onSaveCahnges'>Save</v-btn>  
                             </template>
@@ -58,7 +58,17 @@ export default {
 
     },
     created () {
-        this.editedDate = new Date(this.meetup.date).toISOString().substr(0,10)
+        let date = new Date(this.meetup.date)
+            let day = date.getUTCDate()
+            if (day.toString().length == 1) {
+                day = "0"+day
+            }
+            let month = date.getUTCMonth() + 1
+                if (month.toString().length == 1) {
+                    month = "0"+month
+                }
+            let year = date.getUTCFullYear()
+            this.editableDate = year+"-"+month+"-"+day
     }
     
 }
